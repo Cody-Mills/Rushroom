@@ -1,0 +1,105 @@
+[gd_scene load_steps=14 format=3 uid="uid://d014oabydtl2v"]
+
+[ext_resource type="Texture2D" uid="uid://05cdfnxdr2hr" path="res://SPRITES/enemies/Big Ranged Enemy-Sheet.png" id="1_1wlp5"]
+[ext_resource type="Script" path="res://SCRIPTS/enemy.gd" id="1_3fg22"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti2tx"]
+atlas = ExtResource("1_1wlp5")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhf5u"]
+atlas = ExtResource("1_1wlp5")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb86c"]
+atlas = ExtResource("1_1wlp5")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5isav"]
+atlas = ExtResource("1_1wlp5")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpegc"]
+atlas = ExtResource("1_1wlp5")
+region = Rect2(64, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnyn1"]
+atlas = ExtResource("1_1wlp5")
+region = Rect2(80, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbx0w"]
+atlas = ExtResource("1_1wlp5")
+region = Rect2(96, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6gc5"]
+atlas = ExtResource("1_1wlp5")
+region = Rect2(112, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfn01"]
+animations = [{
+"frames": [{
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_ti2tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhf5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kb86c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5isav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpegc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnyn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbx0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6gc5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ui6p6"]
+radius = 17.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l62s6"]
+radius = 76.9172
+
+[node name="rangedEnemy" type="Node2D" groups=["Enemy"]]
+scale = Vector2(2, 2)
+script = ExtResource("1_3fg22")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xfn01")
+autoplay = "default"
+frame_progress = 0.465118
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_ui6p6")
+debug_color = Color(0.971599, 0, 0.446848, 0.42)
+
+[node name="HitboxTimer" type="Timer" parent="HitBox"]
+wait_time = 0.5
+
+[node name="DetectionBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
+shape = SubResource("CircleShape2D_l62s6")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]
+[connection signal="timeout" from="HitBox/HitboxTimer" to="." method="_on_hitbox_timer_timeout"]
+[connection signal="body_entered" from="DetectionBox" to="." method="_on_detection_box_body_entered"]
+[connection signal="body_exited" from="DetectionBox" to="." method="_on_detection_box_body_exited"]

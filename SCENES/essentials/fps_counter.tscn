@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://pm1727nvcum6"]
+
+[ext_resource type="Script" path="res://SCRIPTS/fps_counter.gd" id="1_8vp8u"]
+
+[node name="FpsCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_8vp8u")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 4.0
+offset_right = 44.0
+offset_bottom = 23.0

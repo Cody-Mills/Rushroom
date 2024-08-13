@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7pr1bpgfjd8u"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6shhk"]
+load_path = "res://.godot/imported/Bush.png-ab3faa32373a0d465c67501e2b955e4d.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmx4u"]
+radius = 4.5
+height = 25.0
+
+[node name="Bush" type="StaticBody2D" groups=["Object"]]
+position = Vector2(0, -11)
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CompressedTexture2D_6shhk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_gmx4u")
