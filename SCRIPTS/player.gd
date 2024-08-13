@@ -4,23 +4,32 @@ const Acceleration = 500
 var Max_Speed = 200
 const Friction = 500
 
-@onready var animationPlayer = $AnimationPlayer
-@onready var animationTree = $AnimationTree
-@onready var animationState = animationTree.get("parameters/playback")
+@onready var animation = $AnimationPlayer
 
 func _physics_process(delta):
-	var input_vector = Vector2.ZERO
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	input_vector = input_vector.normalized() #Makes the diagonal movement consistant speed
-	
-	if input_vector != Vector2.ZERO:
-		animationTree.set("parameters/Idle/blend_position", input_vector)
-		animationTree.set("parameters/Run/blend_position", input_vector)
-		animationState.travel("Run")
-		velocity = velocity.move_toward(input_vector * Max_Speed, Acceleration * delta)
-	else:
-		animationState.travel("Idle")
-		velocity = velocity.move_toward(Vector2.ZERO, Friction * delta)
+	DirectionalInput(delta)
 	move_and_slide()
+	DirectionalAnimation()
 
+func DirectionalInput(delta):
+	var Input_Vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
+	velocity = velocity.move_toward(Input_Vector * Max_Speed, Acceleration * delta)
+
+func DirectionalAnimation():
+	if velocity.length() == 0:
+		animation.stop()
+	else:
+		var Direction
+		if velocity.x < 0: 
+			$Sprite2D.flip_h = true
+			Direction = "Left"
+		elif velocity.x > 0:
+			$Sprite2D.flip_h = false
+			Direction = "Right"
+		elif velocity.y < 0:
+			$Sprite2D.flip_v = false
+			Direction = "Up"
+		elif velocity.y > 0:
+			$Sprite2D.flip_v = true
+			Direction = "Down"
+		animation.play("Move" + Direction)
