@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://pm1727nvcum6" path="res://SCENES/essentials/fps_counter.tscn" id="1_m7gqc"]
 [ext_resource type="PackedScene" uid="uid://b11xjxgh03io5" path="res://SCENES/essentials/player.tscn" id="2_0yi7c"]
 [ext_resource type="PackedScene" uid="uid://c7pr1bpgfjd8u" path="res://SCENES/objects/bush.tscn" id="3_sabjb"]
-[ext_resource type="PackedScene" uid="uid://d014oabydtl2v" path="res://SCENES/enemies/ranged_enemy.tscn" id="4_osxdv"]
+[ext_resource type="PackedScene" uid="uid://d014oabydtl2v" path="res://SCENES/enemies/chaser_enemy.tscn" id="4_osxdv"]
 
 [node name="TestLevel" type="Node2D"]
 y_sort_enabled = true
@@ -40,5 +40,5 @@ position = Vector2(72, 200)
 [node name="Bush2" parent="Bushes" instance=ExtResource("3_sabjb")]
 position = Vector2(472, 248)
 
-[node name="rangedEnemy" parent="." instance=ExtResource("4_osxdv")]
-position = Vector2(401, 189)
+[node name="Chaser Enemy" parent="." instance=ExtResource("4_osxdv")]
+position = Vector2(495, 146)

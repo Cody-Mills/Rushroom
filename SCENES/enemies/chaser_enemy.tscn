@@ -73,7 +73,7 @@ radius = 17.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_l62s6"]
 radius = 76.9172
 
-[node name="rangedEnemy" type="Node2D" groups=["Enemy"]]
+[node name="Chaser Enemy" type="Node2D" groups=["Enemy"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_3fg22")
 

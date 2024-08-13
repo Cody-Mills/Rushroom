@@ -1,8 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://b11xjxgh03io5"]
+[gd_scene load_steps=38 format=3 uid="uid://b11xjxgh03io5"]
 
 [ext_resource type="Script" path="res://SCRIPTS/player.gd" id="1_an7it"]
 [ext_resource type="Texture2D" uid="uid://ih1h1f2w2h80" path="res://SPRITES/player/Player Sheet.png" id="2_a12yn"]
-[ext_resource type="Script" path="res://SCRIPTS/health_component.gd" id="3_6hl4t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ufu7v"]
 radius = 6.0
@@ -378,7 +377,6 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-97.799, -83)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
-position = Vector2(0, -18)
 scale = Vector2(2, 2)
 script = ExtResource("1_an7it")
 
@@ -402,6 +400,3 @@ tree_root = SubResource("AnimationNodeStateMachine_7o6bs")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.604336, 1.02247)
 parameters/Run/blend_position = Vector2(-0.551942, -0.0629957)
-
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("3_6hl4t")

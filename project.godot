@@ -28,6 +28,14 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Gnome Game"
 
+[file_customization]
+
+folder_colors={
+"res://SCENES/": "red",
+"res://SCRIPTS/": "orange",
+"res://SPRITES/": "yellow"
+}
+
 [input]
 
 ui_left={
