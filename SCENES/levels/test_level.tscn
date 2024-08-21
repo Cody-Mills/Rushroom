@@ -19,14 +19,13 @@ grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="Chaser Enemy" parent="." instance=ExtResource("4_osxdv")]
+position = Vector2(495, 146)
+
 [node name="Player" parent="." instance=ExtResource("2_0yi7c")]
-position = Vector2(240, 128)
+position = Vector2(240, 136)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, 4)
 scale = Vector2(2.04078, 2.42324)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
-
-[node name="Chaser Enemy" parent="." instance=ExtResource("4_osxdv")]
-position = Vector2(495, 146)
