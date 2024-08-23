@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://d014oabydtl2v"]
+[gd_scene load_steps=16 format=3 uid="uid://d014oabydtl2v"]
 
 [ext_resource type="Texture2D" uid="uid://05cdfnxdr2hr" path="res://SPRITES/enemies/Big Ranged Enemy-Sheet.png" id="1_1wlp5"]
 [ext_resource type="Script" path="res://SCRIPTS/enemy.gd" id="1_3fg22"]
+[ext_resource type="PackedScene" uid="uid://co7kmh4seex1w" path="res://SCENES/hitboxes & hurtboxes/hitbox.tscn" id="3_g0fgs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ti2tx"]
 atlas = ExtResource("1_1wlp5")
@@ -67,13 +68,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ui6p6"]
-radius = 17.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5xj5o"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e7vg2"]
+radius = 19.5256
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l62s6"]
 radius = 76.9172
 
-[node name="Chaser Enemy" type="Node2D" groups=["Enemy"]]
+[node name="Chaser Enemy" type="StaticBody2D" groups=["Enemy"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_3fg22")
 
@@ -82,14 +86,16 @@ sprite_frames = SubResource("SpriteFrames_xfn01")
 autoplay = "default"
 frame_progress = 0.465118
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = SubResource("CapsuleShape2D_5xj5o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, 1)
-shape = SubResource("CircleShape2D_ui6p6")
-debug_color = Color(0.971599, 0, 0.446848, 0.42)
+[node name="Hitbox" parent="." instance=ExtResource("3_g0fgs")]
 
-[node name="HitboxTimer" type="Timer" parent="HitBox"]
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_e7vg2")
+
+[node name="HitboxTimer" type="Timer" parent="Hitbox"]
 wait_time = 0.5
 
 [node name="DetectionBox" type="Area2D" parent="."]
@@ -97,9 +103,9 @@ wait_time = 0.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
 shape = SubResource("CircleShape2D_l62s6")
 
-[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
-[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
-[connection signal="body_exited" from="HitBox" to="." method="_on_hit_box_body_exited"]
-[connection signal="timeout" from="HitBox/HitboxTimer" to="." method="_on_hitbox_timer_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hit_box_body_exited"]
 [connection signal="body_entered" from="DetectionBox" to="." method="_on_detection_box_body_entered"]
 [connection signal="body_exited" from="DetectionBox" to="." method="_on_detection_box_body_exited"]
+
+[editable path="Hitbox"]
