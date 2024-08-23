@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var hitbox_timer = $HitBox/HitboxTimer
+@onready var hitbox_timer = $Hitbox/HitboxTimer
 
 var SPEED = 80 #Higher is slower because its the speed between
 var is_Chasing = false
