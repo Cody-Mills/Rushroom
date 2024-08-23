@@ -14,7 +14,7 @@ var State = MOVE
 @onready var Animation_Tree = $AnimationTree
 @onready var Animation_State = Animation_Tree.get("parameters/playback")
 
-func _process(delta):
+func _physics_process(delta):
 	match State:
 		MOVE:
 			MoveState(delta)
