@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://05cdfnxdr2hr"
-path="res://.godot/imported/Big Ranged Enemy-Sheet.png-4c5043feaf4f3d5be7787df11868b42f.ctex"
+path="res://.godot/imported/Big Ranged Enemy-Sheet.png-f8ad57b9d404d2c42c3dc3aff4182b58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SPRITES/enemies/Big Ranged Enemy-Sheet.png"
-dest_files=["res://.godot/imported/Big Ranged Enemy-Sheet.png-4c5043feaf4f3d5be7787df11868b42f.ctex"]
+source_file="res://sprites/enemies/Big Ranged Enemy-Sheet.png"
+dest_files=["res://.godot/imported/Big Ranged Enemy-Sheet.png-f8ad57b9d404d2c42c3dc3aff4182b58.ctex"]
 
 [params]
 

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Co-op Game"
-run/main_scene="res://SCENES/levels/test_level.tscn"
+run/main_scene="res://scenes/levels/test_level.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/flush_stdout_on_print.debug=false
 run/max_fps=60
@@ -35,9 +35,9 @@ project/assembly_name="Gnome Game"
 [file_customization]
 
 folder_colors={
-"res://SCENES/": "red",
-"res://SCRIPTS/": "orange",
-"res://SPRITES/": "yellow"
+"res://scenes/": "red",
+"res://scripts/": "orange",
+"res://sprites/": "yellow"
 }
 
 [input]
@@ -87,7 +87,7 @@ ui_attack={
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="PlayerHurtbox"
-2d_physics/layer_4="EnemyHurtbox"
+2d_physics/layer_9="EnemyHurtbox"
 
 [rendering]
 

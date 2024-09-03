@@ -6,7 +6,7 @@ const Friction = 500
 
 enum{
 	MOVE,
-	ATTACK
+	ATTACK,
 }
 
 var State = MOVE
@@ -14,12 +14,13 @@ var State = MOVE
 @onready var Animation_Tree = $AnimationTree
 @onready var Animation_State = Animation_Tree.get("parameters/playback")
 
+
 func _physics_process(delta):
 	match State:
 		MOVE:
 			MoveState(delta)
 		ATTACK:
-			AttackState(delta)
+			AttackState()
 
 func MoveState(delta):
 	var Input_Vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
@@ -37,7 +38,7 @@ func MoveState(delta):
 	if Input.is_action_just_pressed("ui_attack"):
 		State = ATTACK
 	
-func AttackState(delta):
+func AttackState():
 	velocity = Vector2.ZERO
 	Animation_State.travel("Attack")
 
