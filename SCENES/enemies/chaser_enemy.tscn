@@ -77,8 +77,10 @@ radius = 19.5256
 [sub_resource type="CircleShape2D" id="CircleShape2D_l62s6"]
 radius = 76.9172
 
-[node name="Chaser Enemy" type="StaticBody2D" groups=["Enemy"]]
+[node name="Chaser Enemy" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(2, 2)
+collision_layer = 257
+collision_mask = 4
 script = ExtResource("1_3fg22")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

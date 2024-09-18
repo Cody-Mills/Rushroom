@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4kwodyinhq6e"]
 
-[ext_resource type="PackedScene" uid="uid://pm1727nvcum6" path="res://scenes/essentials/fps_counter.tscn" id="1_m7gqc"]
+[ext_resource type="PackedScene" uid="uid://pm1727nvcum6" path="res://scenes/user interface/fps_counter.tscn" id="1_m7gqc"]
 [ext_resource type="PackedScene" uid="uid://b11xjxgh03io5" path="res://scenes/essentials/player.tscn" id="2_0yi7c"]
 [ext_resource type="PackedScene" uid="uid://d014oabydtl2v" path="res://scenes/enemies/chaser_enemy.tscn" id="4_osxdv"]
 
