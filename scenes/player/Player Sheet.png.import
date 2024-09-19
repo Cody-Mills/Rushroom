@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://05cdfnxdr2hr"
-path="res://.godot/imported/Big Ranged Enemy-Sheet.png-f8ad57b9d404d2c42c3dc3aff4182b58.ctex"
+uid="uid://brhj24q0x5q4"
+path="res://.godot/imported/Player Sheet.png-195a25d7c39f487231cc567331ad8dbb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/enemies/Big Ranged Enemy-Sheet.png"
-dest_files=["res://.godot/imported/Big Ranged Enemy-Sheet.png-f8ad57b9d404d2c42c3dc3aff4182b58.ctex"]
+source_file="res://scenes/player/Player Sheet.png"
+dest_files=["res://.godot/imported/Player Sheet.png-195a25d7c39f487231cc567331ad8dbb.ctex"]
 
 [params]
 
