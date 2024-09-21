@@ -39,6 +39,10 @@ folder_colors={
 "res://scenes/": "red"
 }
 
+[global_group]
+
+Player=""
+
 [input]
 
 ui_left={
