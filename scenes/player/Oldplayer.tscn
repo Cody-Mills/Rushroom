@@ -1,8 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://b11xjxgh03io5"]
+[gd_scene load_steps=32 format=3 uid="uid://b11xjxgh03io5"]
 
-[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_an7it"]
 [ext_resource type="Texture2D" uid="uid://brhj24q0x5q4" path="res://scenes/player/OldPlayer Sheet.png" id="2_a12yn"]
-[ext_resource type="Script" path="res://scenes/player/player_animation.gd" id="3_x5fbp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ufu7v"]
 radius = 6.0
@@ -313,10 +311,20 @@ states/Walk/node = SubResource("AnimationNodeBlendSpace2D_js248")
 states/Walk/position = Vector2(531, 100)
 transitions = ["Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_fy8yc"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_kk3rs"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_r67p1")]
 
+[sub_resource type="GDScript" id="GDScript_au0t3"]
+script/source = "extends Node2D
+
+@export var animation_tree : AnimationTree
+@onready var player : Player = get_owner() #Gets Class Name
+
+var last_facing_direction := Vector2(0, -1)
+
+func _physics_process(delta: float) -> void:
+"
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(2, 2)
 collision_layer = 2
-script = ExtResource("1_an7it")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_a12yn")
@@ -341,5 +349,5 @@ parameters/Idle/blend_position = Vector2(0.00894451, 0.884956)
 parameters/Walk/blend_position = Vector2(-0.652952, 0.300885)
 
 [node name="PlayerAnimation" type="Node2D" parent="." node_paths=PackedStringArray("animation_tree")]
-script = ExtResource("3_x5fbp")
+script = SubResource("GDScript_au0t3")
 animation_tree = NodePath("../AnimationTree")

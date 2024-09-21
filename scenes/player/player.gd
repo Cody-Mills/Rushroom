@@ -1,44 +1,36 @@
 class_name Player
 extends CharacterBody2D
 
-#Movement
-const Acceleration = 500
-var Walk_Speed = 200
-const Friction = 500
-#Animation
-var last_facing_direction := Vector2(0, -1)
-@onready var animation_tree = $AnimationTree
+@onready var animation_player = $AnimationPlayer
+@export var speed := 200
+@export var acceleration := 500
+var is_moving : bool = false
+var direction : String = "Down"
 
+enum {MOVE, HIDE}
 
-enum{
-	MOVE,
-	ATTACK,
-}
-
-var State = MOVE
+var state = MOVE
 
 func _physics_process(delta):
-	match State:
+	match state:
 		MOVE:
 			MoveState(delta)
-		ATTACK:
-			AttackState()
-
+		HIDE:
+			HideState()
 
 func MoveState(delta):
-	var Input_Vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
-	SetAnimations()
-	if Input_Vector != Vector2.ZERO:
-		velocity = velocity.move_toward(Input_Vector * Walk_Speed, Acceleration * delta)
+	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
+	velocity = velocity.move_toward(input_vector * speed, acceleration * delta)
+	if velocity.length() == 0:
+		velocity = velocity.move_toward(Vector2.ZERO, acceleration * delta)
+		animation_player.play("Idle" + direction)
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, Friction * delta)
+		if velocity.x < 0: direction = "Left"
+		if velocity.x > 0: direction = "Right"
+		if velocity.y > 0: direction = "Down"
+		if velocity.y < 0: direction = "Up"
+		animation_player.play("Move" + direction)
 	move_and_slide()
-	if Input.is_action_just_pressed("ui_attack"):
-		State = ATTACK
 
-func AttackState():
-	print("Attack")
-
-func SetAnimations():
-	animation_tree.set("parameters/Walk/blend_position", velocity)
-	animation_tree.set("parameters/Idle/blend_position", velocity)
+func HideState():
+	pass
