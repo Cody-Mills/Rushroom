@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 #Movement
-@onready var animation_player = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = %PlayerAnimationPlayer
 @export var speed := 200
 @export var acceleration := 500
 var is_moving : bool = false
@@ -37,7 +37,8 @@ func MoveState(delta):
 	if Input.is_action_pressed("ui_attack"):
 		state = HIDE
 
-func HideState(delta):
+func HideState(delta): 
+	#!!! Need to use the animation.set next function
 	if Input.is_action_pressed("ui_attack") && !is_hiding:
 		StopMovement()
 		animation_player.play("Hide" + direction)

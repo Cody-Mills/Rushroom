@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://rmogxkptgca"]
+
+[ext_resource type="Script" path="res://scenes/levels/start_screen/start_screen.gd" id="1_gv2up"]
+[ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_v4h4u"]
+
+[node name="StartScreen" type="Node2D"]
+script = ExtResource("1_gv2up")
+
+[node name="Player" parent="." instance=ExtResource("1_v4h4u")]
+unique_name_in_owner = true
+position = Vector2(320, 184)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)
+zoom = Vector2(2, 2)

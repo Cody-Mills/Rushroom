@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Co-op Game"
-run/main_scene="res://scenes/levels/test_level/test_level.tscn"
+config/name="Rushroom"
+run/main_scene="res://scenes/levels/start_screen/start_screen.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/flush_stdout_on_print.debug=false
 run/max_fps=60
