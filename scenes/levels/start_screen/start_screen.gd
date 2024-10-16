@@ -1,12 +1,16 @@
 extends Node2D
-@onready var player: Player = %Player
+
 
 #Camera 
-var camera_tween = create_tween()
-
+var tween = create_tween()
 
 func _ready() -> void:
-	#player.animation_player.play("IntroCutscene") idk why no work
-	camera_tween.tween_property($Camera2D, "zoom", Vector2(2,2), 1)
-	camera_tween.tween_property($Camera2D, "zoom", Vector2(1,1), 1.5)
-	pass
+	#Animation not working ?? 
+	var player = get_tree().get_first_node_in_group("Player")
+	var player_animation = player.get_node("PlayerAnimationPlayer")
+	player_animation.play("IntroCutscene")
+	#Camera Stuff
+	tween.tween_property($Camera2D, "zoom", Vector2(2,2), 1)
+	tween.tween_property($Camera2D, "zoom", Vector2(1,1), 1.5)
+	#Title and UI Fade in
+	tween.tween_property($UI/Title, "modulate", Color(1,1,1,1) ,1)

@@ -39,16 +39,16 @@ func MoveState(delta):
 
 func HideState(delta): 
 	#!!! Need to use the animation.set next function
-	if Input.is_action_pressed("ui_attack") && !is_hiding:
-		StopMovement()
-		animation_player.play("Hide" + direction)
-		$Timers/HidingTimer.start()
-		#timeout enables is_hiding
-	if !Input.is_action_pressed("ui_attack") && animation_player.current_animation_position < 0.2:
-		animation_player.stop
-		is_hiding = false
-		state = MOVE
-	if !Input.is_action_pressed("ui_attack") && is_hiding:
+	#if Input.is_action_pressed("ui_attack") && !is_hiding:
+		#StopMovement()
+		#animation_player.play("Hide" + direction)
+		#$Timers/HidingTimer.start()
+		##timeout enables is_hiding
+	#if !Input.is_action_pressed("ui_attack") && animation_player.current_animation_position < 0.2:
+		#animation_player.stop
+		#is_hiding = false
+		#state = MOVE
+	#if !Input.is_action_pressed("ui_attack") && is_hiding:
 		pass
 
 func StopMovement():

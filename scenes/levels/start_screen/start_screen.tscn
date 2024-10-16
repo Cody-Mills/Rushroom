@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://rmogxkptgca"]
+[gd_scene load_steps=4 format=3 uid="uid://rmogxkptgca"]
 
 [ext_resource type="Script" path="res://scenes/levels/start_screen/start_screen.gd" id="1_gv2up"]
 [ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_v4h4u"]
+[ext_resource type="Texture2D" uid="uid://owwewpe58tdi" path="res://scenes/levels/start_screen/title longways.png" id="3_ia4h2"]
 
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_gv2up")
@@ -13,3 +14,21 @@ position = Vector2(320, 184)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 180)
 zoom = Vector2(2, 2)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="TextureRect" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+z_index = 4
+layout_mode = 0
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 602.0
+offset_bottom = 144.0
+texture = ExtResource("3_ia4h2")
+expand_mode = 1
