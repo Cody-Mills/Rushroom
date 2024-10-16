@@ -1,7 +1,5 @@
 extends Node2D
 
-
-#Camera 
 var tween = create_tween()
 
 func _ready() -> void:
@@ -14,3 +12,18 @@ func _ready() -> void:
 	tween.tween_property($Camera2D, "zoom", Vector2(1,1), 1.5)
 	#Title and UI Fade in
 	tween.tween_property($UI/Title, "modulate", Color(1,1,1,1) ,1)
+	tween.tween_property($UI/Play, "modulate", Color(1,1,1,1) ,1)
+	tween.tween_property($UI/Options, "modulate", Color(1,1,1,1) ,0.5)
+	tween.tween_property($UI/Exit, "modulate", Color(1,1,1,1) ,0.5)
+
+
+func _on_play_area_entered(area: Area2D) -> void:
+	pass
+
+
+func _on_options_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_exit_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

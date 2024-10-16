@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://rmogxkptgca"]
+[gd_scene load_steps=10 format=3 uid="uid://rmogxkptgca"]
 
 [ext_resource type="Script" path="res://scenes/levels/start_screen/start_screen.gd" id="1_gv2up"]
 [ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_v4h4u"]
 [ext_resource type="Texture2D" uid="uid://owwewpe58tdi" path="res://scenes/levels/start_screen/title longways.png" id="3_ia4h2"]
+[ext_resource type="Texture2D" uid="uid://bsnp4x6t2e2ya" path="res://scenes/levels/start_screen/play.png" id="4_qrj60"]
+[ext_resource type="Texture2D" uid="uid://cl2mqf55cmgim" path="res://scenes/levels/start_screen/options.png" id="5_5c5my"]
+[ext_resource type="Texture2D" uid="uid://4u7anvltgt64" path="res://scenes/levels/start_screen/exit.png" id="6_q431s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngmsa"]
+size = Vector2(112, 38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31ata"]
+size = Vector2(162, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxetx"]
+size = Vector2(112.5, 35)
 
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_gv2up")
@@ -27,8 +39,64 @@ top_level = true
 z_index = 4
 layout_mode = 0
 offset_left = 40.0
-offset_top = 24.0
+offset_top = 16.0
 offset_right = 602.0
-offset_bottom = 144.0
+offset_bottom = 136.0
 texture = ExtResource("3_ia4h2")
 expand_mode = 1
+
+[node name="Play" type="TextureRect" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+z_index = 4
+layout_mode = 0
+offset_left = 48.0
+offset_top = 272.0
+offset_right = 176.0
+offset_bottom = 336.0
+texture = ExtResource("4_qrj60")
+
+[node name="PlayArea" type="Area2D" parent="UI/Play"]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Play/PlayArea"]
+position = Vector2(62, 33)
+shape = SubResource("RectangleShape2D_ngmsa")
+
+[node name="Options" type="TextureRect" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+z_index = 4
+layout_mode = 0
+offset_left = 232.0
+offset_top = 272.0
+offset_right = 409.0
+offset_bottom = 336.0
+texture = ExtResource("5_5c5my")
+
+[node name="Area2D" type="Area2D" parent="UI/Options"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Options/Area2D"]
+position = Vector2(88, 32)
+shape = SubResource("RectangleShape2D_31ata")
+
+[node name="Exit" type="TextureRect" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+z_index = 5
+layout_mode = 0
+offset_left = 464.0
+offset_top = 272.0
+offset_right = 592.0
+offset_bottom = 336.0
+texture = ExtResource("6_q431s")
+
+[node name="Area2D" type="Area2D" parent="UI/Exit"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Exit/Area2D"]
+position = Vector2(62.75, 31.5)
+shape = SubResource("RectangleShape2D_wxetx")
+
+[connection signal="area_entered" from="UI/Play/PlayArea" to="." method="_on_play_area_entered"]
+[connection signal="area_entered" from="UI/Options/Area2D" to="." method="_on_options_area_entered"]
+[connection signal="area_entered" from="UI/Exit/Area2D" to="." method="_on_exit_area_entered"]
