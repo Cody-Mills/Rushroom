@@ -50,7 +50,7 @@ expand_mode = 1
 position = Vector2(-16, -15)
 
 [node name="CollisionPolygon" type="CollisionPolygon2D" parent="Walls"]
-polygon = PackedVector2Array(4, 1, 667, 1, 667, 388, 656, 389, 657, 14, 15, 15, 16, 376, 658, 377, 660, 389, 2, 388)
+polygon = PackedVector2Array(4, 1, 667, 1, 667, 388, 656, 389, 658, 14, 15, 15, 16, 376, 658, 377, 660, 389, 2, 388)
 
 [node name="Buttons" type="Node2D" parent="."]
 position = Vector2(464, 272)

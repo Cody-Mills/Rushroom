@@ -8,6 +8,7 @@ func _ready() -> void:
 	var player = get_tree().get_first_node_in_group("Player")
 	var player_animation = player.get_node("PlayerAnimationPlayer")
 	player_animation.play("IntroCutscene")
+	print(player_animation.get_current_animation)
 	#Camera Stuff
 	tween.tween_property($Camera2D, "zoom", Vector2(2,2), 1)
 	tween.tween_property($Camera2D, "zoom", Vector2(1,1), 1.5)
