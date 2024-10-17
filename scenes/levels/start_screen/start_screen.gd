@@ -1,6 +1,7 @@
 extends Node2D
 
 var tween = create_tween()
+var is_in_options : bool = false
 
 func _ready() -> void:
 	#Animation not working ?? 
@@ -12,18 +13,23 @@ func _ready() -> void:
 	tween.tween_property($Camera2D, "zoom", Vector2(1,1), 1.5)
 	#Title and UI Fade in
 	tween.tween_property($UI/Title, "modulate", Color(1,1,1,1) ,1)
-	tween.tween_property($UI/Play, "modulate", Color(1,1,1,1) ,1)
-	tween.tween_property($UI/Options, "modulate", Color(1,1,1,1) ,0.5)
-	tween.tween_property($UI/Exit, "modulate", Color(1,1,1,1) ,0.5)
+	tween.tween_property($Buttons/PlayImage, "modulate", Color(1,1,1,1) ,1)
+	tween.tween_property($Buttons/OptionsImage, "modulate", Color(1,1,1,1) ,0.5)
+	tween.tween_property($Buttons/ExitImage, "modulate", Color(1,1,1,1) ,0.5)
 
 
-func _on_play_area_entered(area: Area2D) -> void:
-	pass
+func _on_play_body_entered(body: Node2D) -> void:
+	print("play")
 
 
-func _on_options_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
+
+func _on_options_body_entered(body: Node2D) -> void:
+	print("options")
 
 
-func _on_exit_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
+func _on_exit_body_entered(body: Node2D) -> void:
+	var screen_fade_tween = create_tween()
+	body.speed = 0
+	$CanvasLayer/TextureRect.visible = true
+	screen_fade_tween.tween_property($CanvasLayer/TextureRect, "modulate", Color(0,0,0,1), 1)
+	get_tree().quit

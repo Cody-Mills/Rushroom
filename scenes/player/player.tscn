@@ -629,7 +629,9 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+process_priority = 1
 z_index = 2
+collision_layer = 3
 script = ExtResource("1_b57os")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

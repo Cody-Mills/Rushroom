@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://rmogxkptgca"]
+[gd_scene load_steps=11 format=3 uid="uid://rmogxkptgca"]
 
 [ext_resource type="Script" path="res://scenes/levels/start_screen/start_screen.gd" id="1_gv2up"]
 [ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_v4h4u"]
@@ -6,12 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://bsnp4x6t2e2ya" path="res://scenes/levels/start_screen/play.png" id="4_qrj60"]
 [ext_resource type="Texture2D" uid="uid://cl2mqf55cmgim" path="res://scenes/levels/start_screen/options.png" id="5_5c5my"]
 [ext_resource type="Texture2D" uid="uid://4u7anvltgt64" path="res://scenes/levels/start_screen/exit.png" id="6_q431s"]
+[ext_resource type="Texture2D" uid="uid://b3cjgth1irjuo" path="res://scenes/levels/start_screen/white.jpg" id="7_yh3ya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngmsa"]
 size = Vector2(112, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31ata"]
-size = Vector2(162, 36)
+size = Vector2(164, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxetx"]
 size = Vector2(112.5, 35)
@@ -45,58 +46,66 @@ offset_bottom = 136.0
 texture = ExtResource("3_ia4h2")
 expand_mode = 1
 
-[node name="Play" type="TextureRect" parent="UI"]
+[node name="Walls" type="StaticBody2D" parent="."]
+position = Vector2(-16, -15)
+
+[node name="CollisionPolygon" type="CollisionPolygon2D" parent="Walls"]
+polygon = PackedVector2Array(4, 1, 667, 1, 667, 388, 656, 389, 657, 14, 15, 15, 16, 376, 658, 377, 660, 389, 2, 388)
+
+[node name="Buttons" type="Node2D" parent="."]
+position = Vector2(464, 272)
+
+[node name="PlayImage" type="Sprite2D" parent="Buttons"]
 modulate = Color(1, 1, 1, 0)
 top_level = true
-z_index = 4
-layout_mode = 0
-offset_left = 48.0
-offset_top = 272.0
-offset_right = 176.0
-offset_bottom = 336.0
+z_index = -1
+position = Vector2(128, 304)
 texture = ExtResource("4_qrj60")
 
-[node name="PlayArea" type="Area2D" parent="UI/Play"]
+[node name="Play" type="Area2D" parent="Buttons/PlayImage"]
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Play/PlayArea"]
-position = Vector2(62, 33)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/PlayImage/Play"]
+position = Vector2(-2, 1)
 shape = SubResource("RectangleShape2D_ngmsa")
 
-[node name="Options" type="TextureRect" parent="UI"]
+[node name="OptionsImage" type="Sprite2D" parent="Buttons"]
 modulate = Color(1, 1, 1, 0)
-top_level = true
-z_index = 4
-layout_mode = 0
-offset_left = 232.0
-offset_top = 272.0
-offset_right = 409.0
-offset_bottom = 336.0
+z_index = -1
+position = Vector2(-144, 32)
 texture = ExtResource("5_5c5my")
 
-[node name="Area2D" type="Area2D" parent="UI/Options"]
+[node name="Options" type="Area2D" parent="Buttons/OptionsImage"]
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Options/Area2D"]
-position = Vector2(88, 32)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/OptionsImage/Options"]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_31ata")
 
-[node name="Exit" type="TextureRect" parent="UI"]
+[node name="ExitImage" type="Sprite2D" parent="Buttons"]
 modulate = Color(1, 1, 1, 0)
-top_level = true
-z_index = 5
-layout_mode = 0
-offset_left = 464.0
-offset_top = 272.0
-offset_right = 592.0
-offset_bottom = 336.0
+z_index = -1
+position = Vector2(64, 32)
 texture = ExtResource("6_q431s")
 
-[node name="Area2D" type="Area2D" parent="UI/Exit"]
+[node name="Exit" type="Area2D" parent="Buttons/ExitImage"]
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Exit/Area2D"]
-position = Vector2(62.75, 31.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buttons/ExitImage/Exit"]
+position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_wxetx")
 
-[connection signal="area_entered" from="UI/Play/PlayArea" to="." method="_on_play_area_entered"]
-[connection signal="area_entered" from="UI/Options/Area2D" to="." method="_on_options_area_entered"]
-[connection signal="area_entered" from="UI/Exit/Area2D" to="." method="_on_exit_area_entered"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+visible = false
+modulate = Color(0.0156863, 0, 0, 0)
+offset_left = -287.0
+offset_top = -285.0
+offset_right = 991.0
+offset_bottom = 705.0
+texture = ExtResource("7_yh3ya")
+
+[connection signal="body_entered" from="Buttons/PlayImage/Play" to="." method="_on_play_body_entered"]
+[connection signal="body_entered" from="Buttons/OptionsImage/Options" to="." method="_on_options_body_entered"]
+[connection signal="body_entered" from="Buttons/ExitImage/Exit" to="." method="_on_exit_body_entered"]
