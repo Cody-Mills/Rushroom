@@ -10,8 +10,8 @@ func _ready() -> void:
 	player_animation.play("IntroCutscene")
 	print(player_animation.get_current_animation)
 	#Camera Stuff
-	tween.tween_property($Camera2D, "zoom", Vector2(2,2), 1)
-	tween.tween_property($Camera2D, "zoom", Vector2(1,1), 1.5)
+	tween.tween_property($Camera2D, "zoom", Vector2(2,2), 2)
+	tween.tween_property($Camera2D, "zoom", Vector2(1,1), 2.5)
 	#Title and UI Fade in
 	tween.tween_property($UI/Title, "modulate", Color(1,1,1,1) ,1)
 	tween.tween_property($Buttons/PlayImage, "modulate", Color(1,1,1,1) ,1)
