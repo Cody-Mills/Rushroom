@@ -10,16 +10,21 @@ var direction : String = "Down"
 #Hiding
 var is_hiding : bool = false
 
-enum {MOVE, HIDE}
+enum {INTRO, MOVE, HIDE}
 
-var state = MOVE
+var state = INTRO
 
 func _physics_process(delta):
 	match state:
+		INTRO:
+			IntroState()
 		MOVE:
 			MoveState(delta)
 		HIDE:
 			HideState(delta)
+
+func IntroState():
+	pass
 
 func MoveState(delta):
 	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
@@ -51,9 +56,15 @@ func HideState(delta):
 	#if !Input.is_action_pressed("ui_attack") && is_hiding:
 		pass
 
+
+
 func StopMovement():
 	velocity = velocity.move_toward(Vector2.ZERO, acceleration) #include delta for slower turns
 
 
 func _on_hiding_timer_timeout():
 	is_hiding = true
+
+
+func _on_intro_finished(IntroCutscene: StringName) -> void:
+	state = MOVE
