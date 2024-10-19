@@ -3,12 +3,9 @@ extends Node2D
 var tween = create_tween()
 var is_in_options : bool = false
 
+
+
 func _ready() -> void:
-	#Animation not working ?? 
-	var player = get_tree().get_first_node_in_group("Player")
-	var player_animation = player.get_node("PlayerAnimationPlayer")
-	player_animation.play("IntroCutscene")
-	print(player_animation.get_current_animation)
 	#Camera Stuff
 	tween.tween_property($Camera2D, "zoom", Vector2(2,2), 2)
 	tween.tween_property($Camera2D, "zoom", Vector2(1,1), 2.5)
@@ -20,7 +17,11 @@ func _ready() -> void:
 
 
 func _on_play_body_entered(body: Node2D) -> void:
-	print("play")
+	var screen_fade_tween = create_tween()
+	body.speed = 0
+	$BlackFade/TextureRect.visible = true
+	screen_fade_tween.tween_property($BlackFade/TextureRect, "modulate", Color(0,0,0,1), 1)
+	get_tree().change_scene_to_file("res://scenes/levels/test_level/test_level.tscn")
 
 
 
@@ -31,6 +32,7 @@ func _on_options_body_entered(body: Node2D) -> void:
 func _on_exit_body_entered(body: Node2D) -> void:
 	var screen_fade_tween = create_tween()
 	body.speed = 0
-	$CanvasLayer/TextureRect.visible = true
-	screen_fade_tween.tween_property($CanvasLayer/TextureRect, "modulate", Color(0,0,0,1), 1)
+	$BlackFade/TextureRect.visible = true
+	screen_fade_tween.tween_property($BlackFade/TextureRect, "modulate", Color(0,0,0,1), 1)
+	#need to fix
 	get_tree().quit

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4kwodyinhq6e"]
+[gd_scene load_steps=5 format=3 uid="uid://c4kwodyinhq6e"]
 
 [ext_resource type="PackedScene" uid="uid://pm1727nvcum6" path="res://scenes/user interface/fps_counter/fps_counter.tscn" id="1_bs03b"]
 [ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_hunwt"]
+[ext_resource type="PackedScene" uid="uid://dt7vgm4twh31m" path="res://scenes/player/player_game_camera_2d.tscn" id="2_iihms"]
 [ext_resource type="PackedScene" uid="uid://d014oabydtl2v" path="res://scenes/enemies/chaser_enemy/chaser_enemy.tscn" id="2_pg6pr"]
 
 [node name="TestLevel" type="Node2D"]
@@ -12,11 +13,7 @@ position = Vector2(320, 184)
 collision_layer = 7
 collision_mask = 0
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -4)
-scale = Vector2(4.08156, 4.84648)
-position_smoothing_enabled = true
-position_smoothing_speed = 7.0
+[node name="Camera2D" parent="Player" instance=ExtResource("2_iihms")]
 
 [node name="FpsCounter" parent="." instance=ExtResource("1_bs03b")]
 anchors_preset = 0

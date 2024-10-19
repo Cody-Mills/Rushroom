@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dt7vgm4twh31m"]
+
+[node name="Camera2D" type="Camera2D"]
+position = Vector2(0, -4)
+scale = Vector2(4.08156, 4.84648)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+drag_horizontal_enabled = true
+drag_left_margin = 1.0
+drag_right_margin = 1.0
+editor_draw_limits = true
+editor_draw_drag_margin = true

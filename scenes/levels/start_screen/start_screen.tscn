@@ -95,9 +95,9 @@ collision_mask = 3
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_wxetx")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="BlackFade" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="TextureRect" type="TextureRect" parent="BlackFade"]
 visible = false
 modulate = Color(0.0156863, 0, 0, 0)
 offset_left = -287.0
