@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://pm1727nvcum6" path="res://scenes/user interface/fps_counter/fps_counter.tscn" id="1_bs03b"]
 [ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_hunwt"]
 [ext_resource type="PackedScene" uid="uid://dt7vgm4twh31m" path="res://scenes/player/player_game_camera_2d.tscn" id="2_iihms"]
-[ext_resource type="PackedScene" uid="uid://d014oabydtl2v" path="res://scenes/enemies/chaser_enemy/chaser_enemy.tscn" id="2_pg6pr"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8s33o"]
+normal = Vector2(1, 0)
 
 [node name="TestLevel" type="Node2D"]
 y_sort_enabled = true
@@ -11,7 +13,7 @@ y_sort_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_hunwt")]
 position = Vector2(320, 184)
 collision_layer = 7
-collision_mask = 0
+collision_mask = 3
 
 [node name="Camera2D" parent="Player" instance=ExtResource("2_iihms")]
 
@@ -27,5 +29,16 @@ grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Chaser Enemy" parent="." instance=ExtResource("2_pg6pr")]
-position = Vector2(552, 184)
+[node name="Left Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall"]
+position = Vector2(-1, 128)
+shape = SubResource("WorldBoundaryShape2D_8s33o")
+
+[node name="Right Wall" type="StaticBody2D" parent="."]
+position = Vector2(642, 258)
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall"]
+position = Vector2(-1, 128)
+shape = SubResource("WorldBoundaryShape2D_8s33o")

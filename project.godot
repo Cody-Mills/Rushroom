@@ -36,7 +36,8 @@ project/assembly_name="Gnome Game"
 
 folder_colors={
 "res://resources/": "pink",
-"res://scenes/": "red"
+"res://scenes/": "red",
+"res://scripts/": "yellow"
 }
 
 [global_group]
