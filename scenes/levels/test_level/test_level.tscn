@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4kwodyinhq6e"]
+[gd_scene load_steps=7 format=3 uid="uid://c4kwodyinhq6e"]
 
 [ext_resource type="PackedScene" uid="uid://pm1727nvcum6" path="res://scenes/user interface/fps_counter/fps_counter.tscn" id="1_bs03b"]
 [ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_hunwt"]
 [ext_resource type="PackedScene" uid="uid://dt7vgm4twh31m" path="res://scenes/player/player_game_camera_2d.tscn" id="2_iihms"]
+[ext_resource type="PackedScene" uid="uid://co7kmh4seex1w" path="res://scenes/hitboxes & hurtboxes/hitbox.tscn" id="4_g2ew6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8s33o"]
 normal = Vector2(1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgv83"]
+size = Vector2(251, 65)
 
 [node name="TestLevel" type="Node2D"]
 y_sort_enabled = true
@@ -44,3 +48,12 @@ rotation = 3.14159
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundries/Right Wall"]
 position = Vector2(-1, 128)
 shape = SubResource("WorldBoundaryShape2D_8s33o")
+
+[node name="Hitbox" parent="." instance=ExtResource("4_g2ew6")]
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(312, 89)
+shape = SubResource("RectangleShape2D_pgv83")
+
+[editable path="Hitbox"]
