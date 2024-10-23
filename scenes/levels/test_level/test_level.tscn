@@ -29,16 +29,18 @@ grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Left Wall" type="StaticBody2D" parent="."]
+[node name="World Boundries" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall"]
+[node name="Left Wall" type="StaticBody2D" parent="World Boundries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundries/Left Wall"]
 position = Vector2(-1, 128)
 shape = SubResource("WorldBoundaryShape2D_8s33o")
 
-[node name="Right Wall" type="StaticBody2D" parent="."]
+[node name="Right Wall" type="StaticBody2D" parent="World Boundries"]
 position = Vector2(642, 258)
-rotation = -3.14159
+rotation = 3.14159
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundries/Right Wall"]
 position = Vector2(-1, 128)
 shape = SubResource("WorldBoundaryShape2D_8s33o")

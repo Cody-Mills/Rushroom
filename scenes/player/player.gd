@@ -10,8 +10,8 @@ var direction : String = "Down"
 #Hiding
 var is_hiding : bool = false
 
+#States
 enum {INTRO, MOVE, HIDE}
-
 var state = MOVE
 
 func _ready() -> void:
