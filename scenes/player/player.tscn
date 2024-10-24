@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://cge8xpro8pceq"]
+[gd_scene load_steps=25 format=3 uid="uid://cge8xpro8pceq"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_b57os"]
 [ext_resource type="Texture2D" uid="uid://b1wd8opaqlpex" path="res://scenes/player/Player MushroomGuy-Sheet.png" id="2_1vixo"]
 [ext_resource type="Texture2D" uid="uid://dnitxt4pbrfwa" path="res://scenes/player/Player Shadow.png" id="3_lwb2u"]
-[ext_resource type="PackedScene" uid="uid://coof1iy45pm5i" path="res://scenes/hitboxes & hurtboxes/hurtbox.tscn" id="4_a0j1u"]
+[ext_resource type="Script" path="res://scenes/components/health_component.gd" id="5_vib34"]
+[ext_resource type="PackedScene" uid="uid://co7kmh4seex1w" path="res://scenes/components/hitboxcomponent.tscn" id="5_vr4x5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_54ogx"]
 height = 34.0
@@ -750,7 +751,7 @@ _data = {
 "RESET": SubResource("Animation_5tw4d")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a7qn0"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i16ao"]
 radius = 12.0
 height = 40.0
 
@@ -785,17 +786,21 @@ wait_time = 0.4
 z_index = -1
 texture = ExtResource("3_lwb2u")
 
-[node name="Hurtbox" parent="." instance=ExtResource("4_a0j1u")]
+[node name="HealthComponent" type="Node2D" parent="."]
+script = ExtResource("5_vib34")
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_vr4x5")]
 collision_layer = 4
 collision_mask = 256
-monitoring = false
-monitorable = true
+monitoring = true
+health_component = NodePath("../HealthComponent")
+DAMAGE = 1.0
 
-[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+[node name="CollisionShape2D" parent="HitboxComponent" index="0"]
 position = Vector2(1, 0)
-shape = SubResource("CapsuleShape2D_a7qn0")
+shape = SubResource("CapsuleShape2D_i16ao")
 
 [connection signal="animation_finished" from="PlayerAnimationPlayer" to="." method="_on_intro_finished"]
 [connection signal="timeout" from="Timers/HidingTimer" to="." method="_on_hiding_timer_timeout"]
 
-[editable path="Hurtbox"]
+[editable path="HitboxComponent"]

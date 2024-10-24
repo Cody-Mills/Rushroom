@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://05cdfnxdr2hr" path="res://scenes/enemies/chaser_enemy/chaser_enemy_sheet.png" id="1_1wlp5"]
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_3fg22"]
-[ext_resource type="PackedScene" uid="uid://co7kmh4seex1w" path="res://scenes/hitboxes & hurtboxes/hitbox.tscn" id="3_g0fgs"]
+[ext_resource type="PackedScene" uid="uid://co7kmh4seex1w" path="res://scenes/components/hitboxcomponent.tscn" id="3_g0fgs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ti2tx"]
 atlas = ExtResource("1_1wlp5")
