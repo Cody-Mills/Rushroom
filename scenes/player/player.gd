@@ -15,7 +15,6 @@ enum {INTRO, MOVE, HIDE}
 var state = MOVE
 
 func _ready() -> void:
-	#need to make it so that if the root scene is called start_screen then state = INTRO
 	pass
 
 func _physics_process(delta):
