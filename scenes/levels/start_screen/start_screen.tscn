@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://rmogxkptgca"]
 
-[ext_resource type="Script" path="res://scenes/levels/start_screen/start_screen.gd" id="1_gv2up"]
+[ext_resource type="Script" path="res://scripts/levels/start_screen.gd" id="1_k4sj8"]
 [ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_v4h4u"]
-[ext_resource type="Texture2D" uid="uid://owwewpe58tdi" path="res://scenes/levels/start_screen/title longways.png" id="3_ia4h2"]
-[ext_resource type="Texture2D" uid="uid://bsnp4x6t2e2ya" path="res://scenes/levels/start_screen/play.png" id="4_qrj60"]
-[ext_resource type="Texture2D" uid="uid://cl2mqf55cmgim" path="res://scenes/levels/start_screen/options.png" id="5_5c5my"]
-[ext_resource type="Texture2D" uid="uid://4u7anvltgt64" path="res://scenes/levels/start_screen/exit.png" id="6_q431s"]
-[ext_resource type="Texture2D" uid="uid://b3cjgth1irjuo" path="res://scenes/levels/start_screen/white.jpg" id="7_yh3ya"]
+[ext_resource type="Texture2D" uid="uid://owwewpe58tdi" path="res://assets/levels/start_screen/title longways.png" id="3_ia4h2"]
+[ext_resource type="Texture2D" uid="uid://bsnp4x6t2e2ya" path="res://assets/levels/start_screen/play.png" id="4_qrj60"]
+[ext_resource type="Texture2D" uid="uid://cl2mqf55cmgim" path="res://assets/levels/start_screen/options.png" id="5_5c5my"]
+[ext_resource type="Texture2D" uid="uid://4u7anvltgt64" path="res://assets/levels/start_screen/exit.png" id="6_q431s"]
+[ext_resource type="Texture2D" uid="uid://b3cjgth1irjuo" path="res://assets/levels/start_screen/white.jpg" id="7_yh3ya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngmsa"]
 size = Vector2(112, 38)
@@ -18,7 +18,7 @@ size = Vector2(164, 36)
 size = Vector2(112.5, 35)
 
 [node name="StartScreen" type="Node2D"]
-script = ExtResource("1_gv2up")
+script = ExtResource("1_k4sj8")
 
 [node name="Player" parent="." instance=ExtResource("1_v4h4u")]
 unique_name_in_owner = true

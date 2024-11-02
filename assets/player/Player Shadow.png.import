@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkp2yxeyi5q87"
-path="res://.godot/imported/Player Blank-Sheet.png-2d457c0275463334ad9dd6bab22f5fdb.ctex"
+uid="uid://dnitxt4pbrfwa"
+path="res://.godot/imported/Player Shadow.png-54b2a0d9b3f32af41c5ae79a56530954.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/player/Player Blank-Sheet.png"
-dest_files=["res://.godot/imported/Player Blank-Sheet.png-2d457c0275463334ad9dd6bab22f5fdb.ctex"]
+source_file="res://assets/player/Player Shadow.png"
+dest_files=["res://.godot/imported/Player Shadow.png-54b2a0d9b3f32af41c5ae79a56530954.ctex"]
 
 [params]
 

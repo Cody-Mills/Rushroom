@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://owwewpe58tdi"
-path="res://.godot/imported/title longways.png-3312de9f0b1bbd28821cc0bfc64e2674.ctex"
+uid="uid://b3cjgth1irjuo"
+path="res://.godot/imported/white.jpg-9c089c3a8bc01a64960b2083b5969d87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/levels/start_screen/title longways.png"
-dest_files=["res://.godot/imported/title longways.png-3312de9f0b1bbd28821cc0bfc64e2674.ctex"]
+source_file="res://assets/levels/start_screen/white.jpg"
+dest_files=["res://.godot/imported/white.jpg-9c089c3a8bc01a64960b2083b5969d87.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl2mqf55cmgim"
-path="res://.godot/imported/options.png-cf1180fd51c36bdf0835397b2bb8924c.ctex"
+uid="uid://b1wd8opaqlpex"
+path="res://.godot/imported/Player MushroomGuy-Sheet.png-5b9f9ad485c9d94648466032801673c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/levels/start_screen/options.png"
-dest_files=["res://.godot/imported/options.png-cf1180fd51c36bdf0835397b2bb8924c.ctex"]
+source_file="res://assets/player/Player MushroomGuy-Sheet.png"
+dest_files=["res://.godot/imported/Player MushroomGuy-Sheet.png-5b9f9ad485c9d94648466032801673c3.ctex"]
 
 [params]
 
