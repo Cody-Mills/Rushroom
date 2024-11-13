@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://2nj21pj1oxqj"]
+
+[ext_resource type="Texture2D" uid="uid://cb6nmxaug70r" path="res://assets/test/lego beerus.jpg" id="1_d271t"]
+
+[node name="Lego Beerus" type="Sprite2D"]
+position = Vector2(74, 350)
+scale = Vector2(0.103493, 0.218635)
+texture = ExtResource("1_d271t")

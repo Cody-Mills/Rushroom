@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b314cg41k5ado"]
+
+[ext_resource type="Script" path="res://scripts/player/camera.gd" id="1_3pvtv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1kxn8"]
+
+[node name="Camera" type="Camera2D"]
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+drag_vertical_enabled = true
+drag_left_margin = 1.0
+drag_right_margin = 1.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("1_3pvtv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 150)
+shape = SubResource("WorldBoundaryShape2D_1kxn8")

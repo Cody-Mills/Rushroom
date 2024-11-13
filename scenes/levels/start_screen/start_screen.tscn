@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://rmogxkptgca"]
 
-[ext_resource type="Script" path="res://scripts/levels/start_screen.gd" id="1_k4sj8"]
+[ext_resource type="Script" path="res://scripts/levels/start_screen/start_screen.gd" id="1_k4sj8"]
 [ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_v4h4u"]
 [ext_resource type="Texture2D" uid="uid://owwewpe58tdi" path="res://assets/levels/start_screen/title longways.png" id="3_ia4h2"]
 [ext_resource type="Texture2D" uid="uid://bsnp4x6t2e2ya" path="res://assets/levels/start_screen/play.png" id="4_qrj60"]
