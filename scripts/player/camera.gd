@@ -1,6 +1,8 @@
 extends Camera2D
 
 @onready var Player = get_tree().get_first_node_in_group("Player")
+@onready var camera: Camera2D = $"."
+
 
 func _ready() -> void:
 	#This locks the camera onto the player at the start
@@ -11,4 +13,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if (global_position != Player.global_position):
+		DragCam()
+
+func DragCam():
+	if(global_position != Player.global_position):
 		print("test")
+		camera.move_toward(global_position, Player.global_position, 1)
