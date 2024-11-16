@@ -3,9 +3,9 @@ extends CharacterBody2D
 
 #Movement
 @onready var animation_player: AnimationPlayer = %PlayerAnimationPlayer
-@export var speed := 200
+@export var maxSpeed : float = 200
+@export var speed : float = 30 
 @export var acceleration := 500
-var is_moving : bool = false
 var direction : String = "Down"
 #Hiding
 var is_hiding : bool = false
@@ -14,10 +14,8 @@ var is_hiding : bool = false
 enum {INTRO, MOVE, HIDE}
 var state = MOVE
 
-func _ready() -> void:
-	pass
-
 func _physics_process(delta):
+	print(speed)
 	match state:
 		INTRO:
 			IntroState()
@@ -32,14 +30,22 @@ func IntroState():
 func MoveState(delta):
 	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 	velocity = velocity.move_toward(input_vector * speed, acceleration) #include delta for slower turns
+	#Stopped
 	if velocity.length() == 0:
 		StopMovement()
 		animation_player.play("Idle" + direction)
+		speed = 30
+	#Moving
 	else:
-		if velocity.x < 0: direction = "Left"
-		if velocity.x > 0: direction = "Right"
-		if velocity.y > 0: direction = "Down"
-		if velocity.y < 0: direction = "Up"
+		if velocity.x < 0: 
+			direction = "Left"
+		if velocity.x > 0: 
+			direction = "Right"
+		if velocity.y > 0: 
+			direction = "Down"
+		if velocity.y < 0: 
+			direction = "Up"
+			#do either sin or lerp for speed to maxspeed
 		animation_player.play("Move" + direction)
 	move_and_slide()
 	if Input.is_action_pressed("ui_attack"):

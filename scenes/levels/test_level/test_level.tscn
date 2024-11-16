@@ -1,57 +1,63 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4kwodyinhq6e"]
+[gd_scene load_steps=9 format=3 uid="uid://bq8v0t34b44nm"]
 
-[ext_resource type="PackedScene" uid="uid://pm1727nvcum6" path="res://scenes/user interface/fps counter/fps_counter.tscn" id="1_bs03b"]
-[ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_hunwt"]
-[ext_resource type="PackedScene" uid="uid://b314cg41k5ado" path="res://scenes/player/camera.tscn" id="2_u0lab"]
-[ext_resource type="PackedScene" uid="uid://2nj21pj1oxqj" path="res://scenes/test/lego_beerus.tscn" id="4_lrbfc"]
+[ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_gcfdk"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_nbbsa"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_p2ltn"]
+[ext_resource type="PackedScene" uid="uid://b314cg41k5ado" path="res://scenes/player/camera.tscn" id="4_13vwn"]
+[ext_resource type="PackedScene" uid="uid://2nj21pj1oxqj" path="res://scenes/test/lego_beerus.tscn" id="5_jerri"]
+[ext_resource type="PackedScene" uid="uid://pm1727nvcum6" path="res://scenes/user interface/fps counter/fps_counter.tscn" id="6_at0qw"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8s33o"]
+[sub_resource type="Resource" id="Resource_tjssa"]
+script = ExtResource("3_p2ltn")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kw7s0"]
 normal = Vector2(1, 0)
 
-[node name="TestLevel" type="Node2D"]
-y_sort_enabled = true
+[node name="Test Level" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_hunwt")]
-position = Vector2(320, 180)
+[node name="Player" parent="." instance=ExtResource("1_gcfdk")]
 
-[node name="Camera" parent="." instance=ExtResource("2_u0lab")]
-position = Vector2(320, 180)
-limit_left = 0
-limit_right = 640
-limit_bottom = 360
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+script = ExtResource("2_nbbsa")
+follow_mode = 2
+follow_target = NodePath("../Player")
+tween_resource = SubResource("Resource_tjssa")
 
-[node name="FpsCounter" parent="." instance=ExtResource("1_bs03b")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -80.0
-offset_top = -40.0
-offset_right = -80.0
-offset_bottom = -40.0
-grow_horizontal = 1
-grow_vertical = 1
-metadata/_edit_use_anchors_ = true
+[node name="Camera" parent="." instance=ExtResource("4_13vwn")]
+physics_interpolation_mode = 1
+process_callback = 0
+
+[node name="Beeruses" type="Node2D" parent="."]
+
+[node name="Lego Beerus" parent="Beeruses" instance=ExtResource("5_jerri")]
+position = Vector2(248, 136)
+
+[node name="Lego Beerus2" parent="Beeruses" instance=ExtResource("5_jerri")]
+position = Vector2(-184, 96)
+scale = Vector2(0.103493, -0.0613656)
+
+[node name="FpsCounter" parent="." instance=ExtResource("6_at0qw")]
+offset_left = -296.0
+offset_top = -160.0
+offset_right = -296.0
+offset_bottom = -160.0
 
 [node name="World Boundries" type="Node2D" parent="."]
+position = Vector2(-320, -160)
 
 [node name="Left Wall" type="StaticBody2D" parent="World Boundries"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundries/Left Wall"]
 position = Vector2(-1, 128)
-shape = SubResource("WorldBoundaryShape2D_8s33o")
+shape = SubResource("WorldBoundaryShape2D_kw7s0")
 
 [node name="Right Wall" type="StaticBody2D" parent="World Boundries"]
-position = Vector2(642, 258)
+position = Vector2(640, 256)
 rotation = 3.14159
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundries/Right Wall"]
 position = Vector2(-1, 128)
-shape = SubResource("WorldBoundaryShape2D_8s33o")
-
-[node name="Beerus\'" type="Node2D" parent="."]
-
-[node name="Lego Beerus2" parent="Beerus\'" instance=ExtResource("4_lrbfc")]
-
-[node name="Lego Beerus" parent="Beerus\'" instance=ExtResource("4_lrbfc")]
-position = Vector2(573, 332)
-scale = Vector2(0.133614, 0.111539)
+shape = SubResource("WorldBoundaryShape2D_kw7s0")

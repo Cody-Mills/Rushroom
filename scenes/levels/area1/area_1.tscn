@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://bas6bbjcw1fuw"]
+
+[ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_hwbld"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_7hpnu"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_i1isq"]
+[ext_resource type="PackedScene" uid="uid://b314cg41k5ado" path="res://scenes/player/camera.tscn" id="4_1lgld"]
+[ext_resource type="PackedScene" uid="uid://2nj21pj1oxqj" path="res://scenes/test/lego_beerus.tscn" id="5_78yt3"]
+[ext_resource type="PackedScene" uid="uid://pm1727nvcum6" path="res://scenes/user interface/fps counter/fps_counter.tscn" id="6_gmhf2"]
+
+[sub_resource type="Resource" id="Resource_tjssa"]
+script = ExtResource("3_i1isq")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kw7s0"]
+normal = Vector2(1, 0)
+
+[node name="Area1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_hwbld")]
+position = Vector2(0, 32)
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+script = ExtResource("2_7hpnu")
+tween_resource = SubResource("Resource_tjssa")
+
+[node name="Camera" parent="." instance=ExtResource("4_1lgld")]
+
+[node name="Beeruses" type="Node2D" parent="."]
+
+[node name="Lego Beerus" parent="Beeruses" instance=ExtResource("5_78yt3")]
+position = Vector2(248, 136)
+
+[node name="Lego Beerus2" parent="Beeruses" instance=ExtResource("5_78yt3")]
+position = Vector2(-184, 96)
+scale = Vector2(0.103493, -0.0613656)
+
+[node name="FpsCounter" parent="." instance=ExtResource("6_gmhf2")]
+offset_left = -296.0
+offset_top = -160.0
+offset_right = -296.0
+offset_bottom = -160.0
+
+[node name="World Boundries" type="Node2D" parent="."]
+position = Vector2(-320, -160)
+
+[node name="Left Wall" type="StaticBody2D" parent="World Boundries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundries/Left Wall"]
+position = Vector2(-1, 128)
+shape = SubResource("WorldBoundaryShape2D_kw7s0")
+
+[node name="Right Wall" type="StaticBody2D" parent="World Boundries"]
+position = Vector2(640, 256)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World Boundries/Right Wall"]
+position = Vector2(-1, 128)
+shape = SubResource("WorldBoundaryShape2D_kw7s0")

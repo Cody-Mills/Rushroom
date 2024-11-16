@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://d014oabydtl2v"]
+[gd_scene load_steps=14 format=3 uid="uid://d014oabydtl2v"]
 
 [ext_resource type="Texture2D" uid="uid://05cdfnxdr2hr" path="res://assets/enemies/chaser_enemy/chaser_enemy_sheet.png" id="1_1wlp5"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy.gd" id="1_3fg22"]
-[ext_resource type="PackedScene" path="res://scenes/components/hitboxcomponent.tscn" id="3_g0fgs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ti2tx"]
 atlas = ExtResource("1_1wlp5")
@@ -71,9 +70,6 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5xj5o"]
 radius = 7.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_e7vg2"]
-radius = 19.5256
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_l62s6"]
 radius = 76.9172
 
@@ -92,16 +88,6 @@ frame_progress = 0.465118
 position = Vector2(-0.5, 1)
 shape = SubResource("CapsuleShape2D_5xj5o")
 
-[node name="Hitbox" parent="." instance=ExtResource("3_g0fgs")]
-collision_layer = 3
-collision_mask = 4
-
-[node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource("CircleShape2D_e7vg2")
-
-[node name="HitboxTimer" type="Timer" parent="Hitbox"]
-wait_time = 0.5
-
 [node name="DetectionBox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -109,9 +95,5 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionBox"]
 shape = SubResource("CircleShape2D_l62s6")
 
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hit_box_body_entered"]
-[connection signal="body_exited" from="Hitbox" to="." method="_on_hit_box_body_exited"]
 [connection signal="body_entered" from="DetectionBox" to="." method="_on_detection_box_body_entered"]
 [connection signal="body_exited" from="DetectionBox" to="." method="_on_detection_box_body_exited"]
-
-[editable path="Hitbox"]

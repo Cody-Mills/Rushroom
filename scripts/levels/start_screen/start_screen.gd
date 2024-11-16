@@ -21,7 +21,7 @@ func _on_play_body_entered(body: Node2D) -> void:
 	body.speed = 0
 	$BlackFade/TextureRect.visible = true
 	screen_fade_tween.tween_property($BlackFade/TextureRect, "modulate", Color(0,0,0,1), 1)
-	get_tree().change_scene_to_file("res://scenes/levels/test_level/test_level.tscn")
+	get_tree().change_scene_to_file("res://scenes/levels/area1/area_1.tscn")
 
 
 
