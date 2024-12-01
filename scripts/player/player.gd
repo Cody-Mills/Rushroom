@@ -4,7 +4,7 @@ extends CharacterBody2D
 #Movement
 @onready var animation_player: AnimationPlayer = %PlayerAnimationPlayer
 @export var maxSpeed : float = 200
-@export var speed : float = 30 
+@export var speed : float = 200
 @export var acceleration := 500
 var direction : String = "Down"
 #Hiding
@@ -15,7 +15,7 @@ enum {INTRO, MOVE, HIDE}
 var state = MOVE
 
 func _physics_process(delta):
-	print(speed)
+	#print(speed)
 	match state:
 		INTRO:
 			IntroState()
@@ -34,7 +34,6 @@ func MoveState(delta):
 	if velocity.length() == 0:
 		StopMovement()
 		animation_player.play("Idle" + direction)
-		speed = 30
 	#Moving
 	else:
 		if velocity.x < 0: 

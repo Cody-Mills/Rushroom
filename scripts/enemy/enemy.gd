@@ -1,28 +1,38 @@
-extends CharacterBody2D
+extends Node
+class_name Enemy
 
-@onready var hitbox_timer = $Hitbox/HitboxTimer
+enum {
+	SEARCHING,
+	CHASING,
+	ALERT,
+	ATTACKING,
+}
+var state = SEARCHING
+@onready var Player = get_tree().get_first_node_in_group("Player")
 
-var SPEED = 80 #Higher is slower because its the speed between
-var is_Chasing = false
-var is_Attacking = false
-var Player = null
+func _process(delta: float) -> void:
+	match state:
+		SEARCHING: 
+			SearchingState()
+		CHASING:
+			ChasingState()
+		ALERT:
+			AlertState()
+		ATTACKING:
+			AttackingState()
 
-func _physics_process(delta):
-	if is_Chasing:
-		position += (Player.position - position) / SPEED
-
-func _on_hit_box_body_entered(body):
+func SearchingState():
+	print("Searching")
 	pass
 
-func _on_hit_box_body_exited(body):
+func ChasingState():
+	print("Chasing")
 	pass
 
-func _on_detection_box_body_entered(body):
-	Player = body
-	is_Chasing = true
-	$DetectionBox/CollisionShape2D.scale = Vector2(1.4, 1.4)
+func AlertState():
+	print("Alert")
+	pass
 
-func _on_detection_box_body_exited(body):
-	Player = null
-	is_Chasing = false
-	$DetectionBox/CollisionShape2D.scale = Vector2(1, 1)
+func AttackingState():
+	print("Attacking")
+	pass

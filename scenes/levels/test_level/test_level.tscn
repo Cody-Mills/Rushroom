@@ -1,17 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bq8v0t34b44nm"]
+[gd_scene load_steps=6 format=3 uid="uid://bq8v0t34b44nm"]
 
 [ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_gcfdk"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_nbbsa"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_p2ltn"]
 [ext_resource type="PackedScene" uid="uid://b314cg41k5ado" path="res://scenes/player/camera.tscn" id="4_13vwn"]
 [ext_resource type="PackedScene" uid="uid://2nj21pj1oxqj" path="res://scenes/test/lego_beerus.tscn" id="5_jerri"]
 [ext_resource type="PackedScene" uid="uid://pm1727nvcum6" path="res://scenes/user interface/fps counter/fps_counter.tscn" id="6_at0qw"]
-
-[sub_resource type="Resource" id="Resource_tjssa"]
-script = ExtResource("3_p2ltn")
-duration = 1.0
-transition = 0
-ease = 2
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kw7s0"]
 normal = Vector2(1, 0)
@@ -19,12 +11,6 @@ normal = Vector2(1, 0)
 [node name="Test Level" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_gcfdk")]
-
-[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-script = ExtResource("2_nbbsa")
-follow_mode = 2
-follow_target = NodePath("../Player")
-tween_resource = SubResource("Resource_tjssa")
 
 [node name="Camera" parent="." instance=ExtResource("4_13vwn")]
 physics_interpolation_mode = 1
