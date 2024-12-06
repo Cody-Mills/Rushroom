@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 #Movement
-@onready var animation_player: AnimationPlayer = %PlayerAnimationPlayer
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 @export var maxSpeed : float = 200
 @export var speed : float = 200
 @export var acceleration := 500
@@ -11,23 +11,24 @@ var direction : String = "Down"
 var is_hiding : bool = false
 
 #States
-enum {INTRO, MOVE, HIDE}
-var state = MOVE
+enum {INTRO, WALK, HIDE}
+var state = WALK
 
 func _physics_process(delta):
 	#print(speed)
 	match state:
 		INTRO:
 			IntroState()
-		MOVE:
-			MoveState(delta)
+		WALK:
+			WalkState(delta)
 		HIDE:
 			HideState(delta)
 
 func IntroState():
+	#while in state hide shadow sprite
 	pass
 
-func MoveState(delta):
+func WalkState(delta):
 	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").normalized()
 	velocity = velocity.move_toward(input_vector * speed, acceleration) #include delta for slower turns
 	#Stopped
@@ -45,7 +46,7 @@ func MoveState(delta):
 		if velocity.y < 0: 
 			direction = "Up"
 			#do either sin or lerp for speed to maxspeed
-		animation_player.play("Move" + direction)
+		animation_player.play("Walk" + direction)
 	move_and_slide()
 	if Input.is_action_pressed("ui_attack"):
 		state = HIDE
@@ -75,4 +76,4 @@ func _on_hiding_timer_timeout():
 
 
 func _on_intro_finished(IntroCutscene: StringName) -> void:
-	state = MOVE
+	state = WALK
