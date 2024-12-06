@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/levels/start_screen/start_screen.gd" id="1_k4sj8"]
 [ext_resource type="PackedScene" uid="uid://cge8xpro8pceq" path="res://scenes/player/player.tscn" id="1_v4h4u"]
-[ext_resource type="Texture2D" uid="uid://owwewpe58tdi" path="res://assets/levels/start_screen/title longways.png" id="3_ia4h2"]
-[ext_resource type="Texture2D" uid="uid://bsnp4x6t2e2ya" path="res://assets/levels/start_screen/play.png" id="4_qrj60"]
-[ext_resource type="Texture2D" uid="uid://cl2mqf55cmgim" path="res://assets/levels/start_screen/options.png" id="5_5c5my"]
-[ext_resource type="Texture2D" uid="uid://4u7anvltgt64" path="res://assets/levels/start_screen/exit.png" id="6_q431s"]
-[ext_resource type="Texture2D" uid="uid://b3cjgth1irjuo" path="res://assets/levels/start_screen/white.jpg" id="7_yh3ya"]
+[ext_resource type="Texture2D" uid="uid://biuf76i00sgrm" path="res://scenes/levels/start_screen/Title.png" id="3_24fj5"]
+[ext_resource type="Texture2D" uid="uid://c75sd6yxl1vo8" path="res://scenes/levels/start_screen/Play.png" id="4_xqnc5"]
+[ext_resource type="Texture2D" uid="uid://dghilvy3sjrax" path="res://scenes/levels/start_screen/Options.png" id="5_8heai"]
+[ext_resource type="Texture2D" uid="uid://cki1okumejwqr" path="res://scenes/levels/start_screen/Exit.png" id="6_srha7"]
+[ext_resource type="Texture2D" uid="uid://b3cjgth1irjuo" path="res://sprites/levels/start_screen/white.jpg" id="7_yh3ya"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ngmsa"]
 size = Vector2(112, 38)
@@ -38,13 +38,30 @@ offset_bottom = 40.0
 modulate = Color(1, 1, 1, 0)
 top_level = true
 z_index = 4
+texture_filter = 1
 layout_mode = 0
 offset_left = 40.0
 offset_top = 16.0
 offset_right = 602.0
 offset_bottom = 136.0
-texture = ExtResource("3_ia4h2")
+texture = ExtResource("3_24fj5")
 expand_mode = 1
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://sprites/levels/start_screen/Title.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "f8bc124403d20bbe74f9b2a7d753edb0"
 
 [node name="Walls" type="StaticBody2D" parent="."]
 position = Vector2(-16, -15)
@@ -59,8 +76,28 @@ position = Vector2(464, 272)
 modulate = Color(1, 1, 1, 0)
 top_level = true
 z_index = -1
+texture_filter = 1
 position = Vector2(128, 304)
-texture = ExtResource("4_qrj60")
+texture = ExtResource("4_xqnc5")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"output_section": false,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://sprites/levels/start_screen/Play.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "939276cacf9038a4a55627dc915b52d0"
 
 [node name="Play" type="Area2D" parent="Buttons/PlayImage"]
 collision_mask = 3
@@ -72,8 +109,26 @@ shape = SubResource("RectangleShape2D_ngmsa")
 [node name="OptionsImage" type="Sprite2D" parent="Buttons"]
 modulate = Color(1, 1, 1, 0)
 z_index = -1
+texture_filter = 1
 position = Vector2(-144, 32)
-texture = ExtResource("5_5c5my")
+texture = ExtResource("5_8heai")
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": false,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://sprites/levels/start_screen/Options.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "33083bc93dd316ffdcccc125969df2b1"
 
 [node name="Options" type="Area2D" parent="Buttons/OptionsImage"]
 collision_mask = 3
@@ -85,8 +140,25 @@ shape = SubResource("RectangleShape2D_31ata")
 [node name="ExitImage" type="Sprite2D" parent="Buttons"]
 modulate = Color(1, 1, 1, 0)
 z_index = -1
+texture_filter = 1
 position = Vector2(64, 32)
-texture = ExtResource("6_q431s")
+texture = ExtResource("6_srha7")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "res://sprites/levels/start_screen/Exit.aseprite"
+}
+metadata/_aseprite_wizard_source_file_hash_ = "8b5baeb86aa52e15197c4a605479a2c2"
 
 [node name="Exit" type="Area2D" parent="Buttons/ExitImage"]
 collision_mask = 3

@@ -38,16 +38,16 @@ project/assembly_name="Gnome Game"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://addons/": "red",
-"res://assets/": "orange",
 "res://resources/": "pink",
 "res://scenes/": "yellow",
-"res://scripts/": "green"
+"res://scripts/": "green",
+"res://sprites/": "orange"
 }
 
 [global_group]
